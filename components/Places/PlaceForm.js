@@ -1,14 +1,14 @@
-import { useCallback, useState } from 'react';
-import { ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
+import { useCallback, useState } from "react";
+import { ScrollView, StyleSheet, Text, TextInput, View } from "react-native";
 
-import { Colors } from '../../constants/colors';
-import { Place } from '../../models/place';
-import Button from '../UI/Button';
-import ImagePicker from './ImagePicker';
-import LocationPicker from './LocationPicker';
+import { Colors } from "../../constants/colors";
+import { Place } from "../../models/place";
+import Button from "../UI/Button";
+import ImagePicker from "./ImagePicker";
+import LocationPicker from "./LocationPicker";
 
-function PlaceForm({onCreatePlace}) {
-  const [enteredTitle, setEnteredTitle] = useState('');
+function PlaceForm({ onCreatePlace }) {
+  const [enteredTitle, setEnteredTitle] = useState("");
   const [selectedImage, setSelectedImage] = useState();
   const [pickedLocation, setPickedLocation] = useState();
 
@@ -51,10 +51,10 @@ export default PlaceForm;
 const styles = StyleSheet.create({
   form: {
     flex: 1,
-    padding: 24,
+    padding: 12,
   },
   label: {
-    fontWeight: 'bold',
+    fontWeight: "bold",
     marginBottom: 4,
     color: Colors.primary500,
   },
@@ -63,7 +63,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 4,
     paddingVertical: 8,
     fontSize: 16,
-    borderBottomColor: Colors.primary700,
+    borderRadius: 6,
+    // borderBottomColor: Colors.primary700,
     borderBottomWidth: 2,
     backgroundColor: Colors.primary100,
   },

@@ -1,8 +1,8 @@
-import * as SQLite from 'expo-sqlite';
+import * as SQLite from "expo-sqlite";
 
-import { Place } from '../models/place';
+import { Place } from "../models/place";
 
-const database = SQLite.openDatabase('places.db');
+const database = SQLite.openDatabase("places.db");
 
 export function init() {
   const promise = new Promise((resolve, reject) => {
@@ -59,7 +59,7 @@ export function fetchPlaces() {
   const promise = new Promise((resolve, reject) => {
     database.transaction((tx) => {
       tx.executeSql(
-        'SELECT * FROM places',
+        "SELECT * FROM places",
         [],
         (_, result) => {
           const places = [];
@@ -94,7 +94,7 @@ export function fetchPlaceDetails(id) {
   const promise = new Promise((resolve, reject) => {
     database.transaction((tx) => {
       tx.executeSql(
-        'SELECT * FROM places WHERE id = ?',
+        "SELECT * FROM places WHERE id = ?",
         [id],
         (_, result) => {
           const dbPlace = result.rows._array[0];
@@ -105,6 +105,25 @@ export function fetchPlaceDetails(id) {
             dbPlace.id
           );
           resolve(place);
+        },
+        (_, error) => {
+          reject(error);
+        }
+      );
+    });
+  });
+
+  return promise;
+}
+
+export function deletePlaceDetails(id) {
+  const promise = new Promise((resolve, reject) => {
+    database.transaction((tx) => {
+      tx.executeSql(
+        "DELETE FROM places WHERE id = ?",
+        [id],
+        () => {
+          resolve();
         },
         (_, error) => {
           reject(error);

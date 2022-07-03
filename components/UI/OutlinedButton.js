@@ -13,7 +13,7 @@ function OutlinedButton({ onPress, icon, children }) {
         style={styles.icon}
         name={icon}
         size={18}
-        color={Colors.primary500}
+        color={Colors.secondary500}
       />
       <Text style={styles.text}>{children}</Text>
     </Pressable>

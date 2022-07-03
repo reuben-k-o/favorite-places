@@ -1,2 +1,4 @@
 config.js
 node_modules
+.expo
+app.config.js

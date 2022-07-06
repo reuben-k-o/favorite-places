@@ -1,8 +1,8 @@
-import { useCallback, useLayoutEffect, useState } from 'react';
-import { Alert, StyleSheet } from 'react-native';
-import MapView, { Marker } from 'react-native-maps';
+import { useCallback, useLayoutEffect, useState } from "react";
+import { Alert, StyleSheet } from "react-native";
+import MapView, { Marker, PROVIDER_GOOGLE } from "react-native-maps";
 
-import IconButton from '../components/UI/IconButton';
+import IconButton from "../components/UI/IconButton";
 
 function Map({ navigation, route }) {
   const initialLocation = route.params && {
@@ -32,13 +32,13 @@ function Map({ navigation, route }) {
   const savePickedLocationHandler = useCallback(() => {
     if (!selectedLocation) {
       Alert.alert(
-        'No location picked!',
-        'You have to pick a location (by tapping on the map) first!'
+        "No location picked!",
+        "You have to pick a location (by tapping on the map) first!"
       );
       return;
     }
 
-    navigation.navigate('AddPlace', {
+    navigation.navigate("AddPlace", {
       pickedLat: selectedLocation.lat,
       pickedLng: selectedLocation.lng,
     });
@@ -65,6 +65,7 @@ function Map({ navigation, route }) {
       style={styles.map}
       initialRegion={region}
       onPress={selectLocationHandler}
+      provider={PROVIDER_GOOGLE}
     >
       {selectedLocation && (
         <Marker

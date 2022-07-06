@@ -72,9 +72,9 @@ function LocationPicker({ onPickLocation }) {
   async function getLocationHandler() {
     const hasPermission = await verifyPermissions();
 
-    // if (!hasPermission) {
-    //   return;
-    // }
+    if (!hasPermission) {
+      return;
+    }
 
     const location = await getCurrentPositionAsync();
     console.log(location);
